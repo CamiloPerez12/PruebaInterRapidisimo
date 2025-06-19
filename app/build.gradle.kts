@@ -51,6 +51,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    // navigation
+    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.androidx.navigation.fragment)
+    // retrofit
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }

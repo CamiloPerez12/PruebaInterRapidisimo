@@ -1,4 +1,4 @@
-package com.jcpd.pruebainterrapidisimo.data
+package com.jcpd.pruebainterrapidisimo.data.models
 
 data class UserModel(
     val user: String,
