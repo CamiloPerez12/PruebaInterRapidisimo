@@ -8,5 +8,6 @@ data class HomeScreenState (
     val shouldDisplayDialog : Boolean = false,
     val error : Boolean = false,
     val loading : Boolean = true,
-    val isVersionUp: Boolean = false
+    val isVersionUp: Boolean = false,
+    val errorMessage: String? = null
 )

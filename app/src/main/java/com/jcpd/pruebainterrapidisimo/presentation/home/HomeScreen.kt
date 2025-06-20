@@ -42,7 +42,8 @@ class HomeScreen : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name_home_fragment)
+        (activity as AppCompatActivity).supportActionBar?.title =
+            getString(R.string.app_name_home_fragment)
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -59,23 +60,26 @@ class HomeScreen : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.state.collect {
-                    if (it.version?.isNotBlank()==true) {
+                    if (it.version?.isNotBlank() == true) {
                         showVersion(it.shouldDisplayDialog, it.isVersionUp)
                     }
-                    if (!it.loading){
+                    if (!it.loading) {
                         progressBar?.visibility = View.GONE
                     }
-                    showLoginError(it.error)
+                    showLoginError(it.error, it.errorMessage)
                     showInfo(it.userModel)
                 }
             }
         }
     }
 
-    private fun showVersion(displayer : Boolean, isVersionUp : Boolean){
+    private fun showVersion(displayer: Boolean, isVersionUp: Boolean) {
         if (displayer) {
-            val dialogMessage = if (!isVersionUp) { getString(R.string.api_version_dialog_up)
-            } else { getString(R.string.api_version_dialog_down) }
+            val dialogMessage = if (!isVersionUp) {
+                getString(R.string.api_version_dialog_up)
+            } else {
+                getString(R.string.api_version_dialog_down)
+            }
             val dialogBuilder = AlertDialog.Builder(requireActivity())
             dialogBuilder.setMessage(dialogMessage)
                 .setCancelable(true)
@@ -88,10 +92,10 @@ class HomeScreen : Fragment() {
         }
     }
 
-    private fun showLoginError(errorStatus : Boolean){
+    private fun showLoginError(errorStatus: Boolean, errorMessage: String?) {
         if (errorStatus) {
             val dialogBuilder = AlertDialog.Builder(requireActivity())
-            dialogBuilder.setMessage("Error al realizar el login")
+            dialogBuilder.setMessage(errorMessage)
                 .setCancelable(true)
                 .setNegativeButton("Ok", DialogInterface.OnClickListener { dialog, id ->
                     dialog.dismiss()
@@ -102,7 +106,7 @@ class HomeScreen : Fragment() {
         }
     }
 
-    private fun showInfo(userModelResponse : UserModel?) {
+    private fun showInfo(userModelResponse: UserModel?) {
         user?.text = userModelResponse?.user
         name?.text = userModelResponse?.name
         id?.text = userModelResponse?.id

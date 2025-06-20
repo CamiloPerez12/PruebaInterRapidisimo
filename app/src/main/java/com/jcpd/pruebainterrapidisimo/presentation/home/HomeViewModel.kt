@@ -36,7 +36,8 @@ class HomeViewModel @Inject constructor(
                 state.copy(
                     userModel = response.body(),
                     loading = false,
-                    error = response.code() != 200
+                    error = response.code() != 200,
+                    errorMessage = response.errorBody().toString()
                 )
             }
         }
