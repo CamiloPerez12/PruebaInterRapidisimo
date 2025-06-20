@@ -3,7 +3,7 @@ package com.jcpd.pruebainterrapidisimo.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jcpd.pruebainterrapidisimo.data.Repository
-import com.jcpd.pruebainterrapidisimo.data.models.UserModel
+import com.jcpd.pruebainterrapidisimo.data.local.SharedPreferencesManager
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +14,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository: Repository
+    private val repository: Repository,
+    private val sharedPreferencesManager: SharedPreferencesManager
 ) : ViewModel() {
 
     private val _state = MutableStateFlow<HomeScreenState>(HomeScreenState())
@@ -29,6 +30,9 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val response = repository.getLogin()
             _state.update { state ->
+                if (response.isSuccessful && response.body() != null) {
+                    sharedPreferencesManager.saveUser(response.body())
+                }
                 state.copy(
                     userModel = response.body(),
                     loading = false,
@@ -42,15 +46,20 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val response = repository.getVersion().body()
             _state.update { state ->
+                if (response != null) {
+                    comperVersion(response)
+                    sharedPreferencesManager.saveVersion(response)
+                }
                 state.copy(version = response)
             }
         }
     }
 
-    fun dialogShowned() {
-        _state.update { state ->
-            state.copy(alertDialogShowned = true)
+    private fun comperVersion(response: String){
+        if (sharedPreferencesManager.readVersion() != response){
+            _state.update { state ->
+                state.copy(shouldDisplayDialog = true)
+            }
         }
     }
-
 }

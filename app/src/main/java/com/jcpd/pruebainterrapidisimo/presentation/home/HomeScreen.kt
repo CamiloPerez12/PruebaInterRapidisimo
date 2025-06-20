@@ -15,7 +15,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import androidx.transition.Visibility
 import com.jcpd.pruebainterrapidisimo.R
 import com.jcpd.pruebainterrapidisimo.data.models.UserModel
 import com.jcpd.pruebainterrapidisimo.databinding.HomeFragmentBinding
@@ -30,15 +29,12 @@ class HomeScreen : Fragment() {
     private var _binding: HomeFragmentBinding? = null
     private val binding get() = _binding!!
 
-
     private var user: TextView? = null
     private var name: TextView? = null
     private var id: TextView? = null
     private var buttonTables: Button? = null
     private var buttonLocations: Button? = null
     private var progressBar: ProgressBar? = null
-
-    private val localVersion: Int? = 110
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,9 +57,8 @@ class HomeScreen : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.state.collect {
-                    if (it.version?.isNotBlank()==true && !it.alertDialogShowned) {
-                        homeViewModel.dialogShowned()
-                        showVersion(it.version.toIntOrNull())
+                    if (it.version?.isNotBlank()==true) {
+                        showVersion(it.shouldDisplayDialog)
                     }
                     if (!it.loading){
                         progressBar?.visibility = View.GONE
@@ -75,8 +70,8 @@ class HomeScreen : Fragment() {
         }
     }
 
-    private fun showVersion(version : Int?){
-        if (version != localVersion) {
+    private fun showVersion(displayer : Boolean){
+        if (displayer) {
             val dialogBuilder = AlertDialog.Builder(requireActivity())
             dialogBuilder.setMessage("La version actual del aplicativo es diferente")
                 .setCancelable(true)
@@ -117,9 +112,6 @@ class HomeScreen : Fragment() {
         buttonLocations = binding.buttonLocations
         progressBar = binding.progressCircular
 
-        user?.text = "meh"
-        name?.text = "meh2"
-        id?.text = "meh3"
         buttonTables?.text = "Tables"
         buttonLocations?.text = "Locations"
 
@@ -132,6 +124,4 @@ class HomeScreen : Fragment() {
         }
 
     }
-
-
 }
