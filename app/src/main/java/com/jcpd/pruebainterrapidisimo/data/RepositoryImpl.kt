@@ -1,5 +1,6 @@
 package com.jcpd.pruebainterrapidisimo.data
 
+import com.jcpd.pruebainterrapidisimo.data.models.UserModel
 import com.jcpd.pruebainterrapidisimo.data.network.NetworkDataSource
 import retrofit2.Response
 import javax.inject.Inject
@@ -9,5 +10,9 @@ class RepositoryImpl @Inject constructor(
 ): Repository {
     override suspend fun getVersion() : Response<String> {
         return networkDataSource.getVersion()
+    }
+
+    override suspend fun getLogin(): Response<UserModel> {
+        return  networkDataSource.getLogin()
     }
 }

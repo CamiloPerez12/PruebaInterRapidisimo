@@ -3,6 +3,7 @@ package com.jcpd.pruebainterrapidisimo.presentation.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.jcpd.pruebainterrapidisimo.data.Repository
+import com.jcpd.pruebainterrapidisimo.data.models.UserModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -13,22 +14,42 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val repository : Repository
-): ViewModel(){
+    private val repository: Repository
+) : ViewModel() {
 
-    private val _version = MutableStateFlow("")
-    val version : StateFlow <String> = _version.asStateFlow()
+    private val _state = MutableStateFlow<HomeScreenState>(HomeScreenState())
+    val state: StateFlow<HomeScreenState> = _state.asStateFlow()
 
     init {
         checkVersion()
+        login()
+    }
+
+    private fun login() {
+        viewModelScope.launch {
+            val response = repository.getLogin()
+            _state.update { state ->
+                state.copy(
+                    userModel = response.body(),
+                    loading = false,
+                    error = response.code() != 200
+                )
+            }
+        }
     }
 
     private fun checkVersion() {
         viewModelScope.launch {
             val response = repository.getVersion().body()
-            _version.update {
-                response?: "Error"
+            _state.update { state ->
+                state.copy(version = response)
             }
+        }
+    }
+
+    fun dialogShowned() {
+        _state.update { state ->
+            state.copy(alertDialogShowned = true)
         }
     }
 
