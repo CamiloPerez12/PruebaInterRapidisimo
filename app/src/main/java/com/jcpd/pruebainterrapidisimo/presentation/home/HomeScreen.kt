@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -41,6 +42,7 @@ class HomeScreen : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name_home_fragment)
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -58,7 +60,7 @@ class HomeScreen : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.state.collect {
                     if (it.version?.isNotBlank()==true) {
-                        showVersion(it.shouldDisplayDialog)
+                        showVersion(it.shouldDisplayDialog, it.isVersionUp)
                     }
                     if (!it.loading){
                         progressBar?.visibility = View.GONE
@@ -70,10 +72,12 @@ class HomeScreen : Fragment() {
         }
     }
 
-    private fun showVersion(displayer : Boolean){
+    private fun showVersion(displayer : Boolean, isVersionUp : Boolean){
         if (displayer) {
+            val dialogMessage = if (!isVersionUp) { getString(R.string.api_version_dialog_up)
+            } else { getString(R.string.api_version_dialog_down) }
             val dialogBuilder = AlertDialog.Builder(requireActivity())
-            dialogBuilder.setMessage("La version actual del aplicativo es diferente")
+            dialogBuilder.setMessage(dialogMessage)
                 .setCancelable(true)
                 .setNegativeButton("Ok", DialogInterface.OnClickListener { dialog, id ->
                     dialog.dismiss()
@@ -112,8 +116,8 @@ class HomeScreen : Fragment() {
         buttonLocations = binding.buttonLocations
         progressBar = binding.progressCircular
 
-        buttonTables?.text = "Tables"
-        buttonLocations?.text = "Locations"
+        buttonTables?.text = getString(R.string.button_tables)
+        buttonLocations?.text = getString(R.string.button_locations)
 
         buttonTables?.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_tableFragment)

@@ -27,7 +27,7 @@ class TablesScreen : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name_tables_fragment)
         _binding = TablesFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }

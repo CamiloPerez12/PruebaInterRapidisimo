@@ -2,64 +2,119 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="?attr/actionBarSize"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:layout_marginTop="?attr/actionBarSize">
 
     <ProgressBar
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="128dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/textViewUserLabel"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario:"
+        android:layout_marginStart="60dp"
+        android:textSize="24sp"
+        android:layout_marginTop="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/User"
-        android:layout_width="wrap_content"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24.dp"
+        android:layout_marginStart="8dp"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/textViewUserLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/progress_circular"
+        app:layout_constraintStart_toEndOf="@id/textViewUserLabel"
+        app:layout_constraintTop_toTopOf="@id/textViewUserLabel"
         tools:text="jcpd" />
 
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/textViewNameLabel"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:text="Nombre:"
+        android:layout_marginStart="60dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/User"
+        app:layout_constraintTop_toBottomOf="@id/textViewUserLabel" />
+
+    <TextView
+        android:id="@+id/Name"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/textViewNameLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewNameLabel"
+        app:layout_constraintTop_toTopOf="@id/textViewNameLabel"
         tools:text="Camilo Perez" />
 
     <TextView
-        android:id="@+id/Id"
+        android:id="@+id/textViewIdLabel"
+        style="@style/TextAppearance.MaterialComponents.Subtitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        android:text="ID:"
+        android:layout_marginStart="60dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name"
+        app:layout_constraintTop_toBottomOf="@id/textViewNameLabel" />
+
+    <TextView
+        android:id="@+id/Id"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="24sp"
+        app:layout_constraintBaseline_toBaselineOf="@id/textViewIdLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/textViewIdLabel"
+        app:layout_constraintTop_toTopOf="@id/textViewIdLabel"
         tools:text="123456789" />
 
-
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonTables"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24.dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="Tablas"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/buttonLocations"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="Tables" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLocations"
-        android:layout_width="wrap_content"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="24.dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="24dp"
+        android:text="Ubicaciones"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/buttonTables"
-        tools:text="Locations" />
+        app:layout_constraintStart_toEndOf="@+id/buttonTables" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

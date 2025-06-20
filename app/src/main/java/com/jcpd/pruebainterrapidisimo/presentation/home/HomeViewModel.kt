@@ -55,10 +55,13 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    private fun comperVersion(response: String){
-        if (sharedPreferencesManager.readVersion() != response){
-            _state.update { state ->
-                state.copy(shouldDisplayDialog = true)
+    private fun comperVersion(response: String) {
+        var version = sharedPreferencesManager.readVersion()
+        if (version != response) {
+            if (version != null) {
+                _state.update { state ->
+                    state.copy(shouldDisplayDialog = true, isVersionUp = version.toInt() > response.toInt())
+                }
             }
         }
     }

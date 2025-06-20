@@ -30,7 +30,7 @@ class LocationScreen : Fragment(){
         savedInstanceState: Bundle?
     ): View? {
 
-        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
+        (activity as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name_locations_fragment)
 
         _binding = LocationsFragmentBinding.inflate(inflater, container, false)
         return binding.root

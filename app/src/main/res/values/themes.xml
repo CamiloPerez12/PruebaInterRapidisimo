@@ -1,13 +1,34 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.PruebaInterRapidisimo" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
 
-    <style name="Theme.PruebaInterRapidisimo" parent="Base.Theme.PruebaInterRapidisimo" />
+    <style name="Base.Theme.PruebaInterRapidisimo" parent="Theme.Material3.DayNight.NoActionBar">
+
+    </style>
 
     <style name="Theme.PruebaInterRapidisimo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.PruebaInterRapidisimo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <style name="Theme.PruebaInterRapidisimo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/ir_orange_main</item>
+        <item name="colorPrimaryVariant">@color/ir_orange_main</item>
+        <item name="colorOnPrimary">@color/ir_white_main</item>
+
+        <item name="colorSecondary">@color/ir_orange_main</item>
+        <item name="colorSecondaryVariant">@color/ir_orange_main</item>
+        <item name="colorOnSecondary">@color/ir_black_main</item>
+
+        <item name="android:colorBackground">@color/ir_white_main</item>
+        <item name="colorSurface">@color/ir_white_main</item>
+        <item name="colorOnBackground">@color/ir_black_main</item>
+        <item name="colorOnSurface">@color/ir_black_main</item>
+
+        <item name="colorError">#B00020</item>
+        <item name="colorOnError">@color/white</item>
+
+
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+    </style>
+
 </resources>

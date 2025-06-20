@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PruebaInterRapidisimo</string>
+    <string name="api_version_dialog_up">La versión de la API es superior a la del dispositivo</string>
+    <string name="api_version_dialog_down">La versión de la API es inferior a la del dispositivo</string>
+    <string name="app_name_home_fragment">Home</string>
+    <string name="app_name_tables_fragment">Tables</string>
+    <string name="app_name_locations_fragment">Locations</string>
+    <string name="button_tables">Tablas</string>
+    <string name="button_locations">Localidades</string>
+
 </resources>

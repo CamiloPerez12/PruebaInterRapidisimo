@@ -16,7 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Location"
-        app:layout_constraintWidth_percent="0.8"/>
+        app:layout_constraintWidth_percent="0.8"
+        android:textColor="@color/ir_black_main"/>
 
     <TextView
         android:id="@+id/locationCity"
@@ -27,7 +28,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:text="City"
-        app:layout_constraintWidth_percent="0.2"/>
+        app:layout_constraintWidth_percent="0.2"
+        android:textColor="@color/ir_black_main"/>
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
