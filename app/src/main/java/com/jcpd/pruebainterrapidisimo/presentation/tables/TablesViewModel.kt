@@ -24,6 +24,7 @@ class TablesViewModel @Inject constructor(
 
     private fun getEsqueme() {
         viewModelScope.launch {
+            _state.value = repository.getTables()
             val response = repository.getEsqueme()
             if (response.isSuccessful && response.body() != null) {
                 _state.value = response.body()!!

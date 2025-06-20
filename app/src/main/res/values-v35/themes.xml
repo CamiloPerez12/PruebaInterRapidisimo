@@ -1,13 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
-
-    <style name="Base.Theme.PruebaInterRapidisimo" parent="Theme.Material3.DayNight.NoActionBar">
-
-    </style>
-
-    <style name="Theme.PruebaInterRapidisimo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="Theme.PruebaInterRapidisimo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
 
     <style name="Theme.PruebaInterRapidisimo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/ir_orange_main</item>
@@ -31,5 +23,4 @@
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
 
     </style>
-
 </resources>

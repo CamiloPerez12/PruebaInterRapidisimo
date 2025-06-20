@@ -61,9 +61,18 @@ class HomeViewModel @Inject constructor(
         if (version != response) {
             if (version != null) {
                 _state.update { state ->
-                    state.copy(shouldDisplayDialog = true, isVersionUp = version.toInt() > response.toInt())
+                    state.copy(
+                        shouldDisplayDialog = true,
+                        isVersionUp = version.toInt() > response.toInt()
+                    )
                 }
             }
+        }
+    }
+
+    fun updateDialogState() {
+        _state.update { state ->
+            state.copy(isVersionDialog = true)
         }
     }
 }

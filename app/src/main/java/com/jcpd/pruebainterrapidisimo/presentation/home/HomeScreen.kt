@@ -60,7 +60,7 @@ class HomeScreen : Fragment() {
         lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.state.collect {
-                    if (it.version?.isNotBlank() == true) {
+                    if (it.version?.isNotBlank() == true && !it.isVersionDialog) {
                         showVersion(it.shouldDisplayDialog, it.isVersionUp)
                     }
                     if (!it.loading) {
@@ -89,6 +89,7 @@ class HomeScreen : Fragment() {
             val alert = dialogBuilder.create()
             alert.setTitle("Version Control")
             alert.show()
+            homeViewModel.updateDialogState()
         }
     }
 

@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Usuario:"
+        android:textColor="@color/ir_black_main"
         android:layout_marginStart="60dp"
         android:textSize="24sp"
         android:layout_marginTop="200dp"
@@ -40,6 +41,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewUserLabel"
         app:layout_constraintTop_toTopOf="@id/textViewUserLabel"
+        android:textColor="@color/ir_black_main"
         tools:text="jcpd" />
 
     <TextView
@@ -51,6 +53,7 @@
         android:textSize="24sp"
         android:text="Nombre:"
         android:layout_marginStart="60dp"
+        android:textColor="@color/ir_black_main"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewUserLabel" />
 
@@ -61,6 +64,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textSize="24sp"
+        android:textColor="@color/ir_black_main"
         app:layout_constraintBaseline_toBaselineOf="@id/textViewNameLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewNameLabel"
@@ -75,6 +79,7 @@
         android:layout_marginTop="16dp"
         android:textSize="24sp"
         android:text="ID:"
+        android:textColor="@color/ir_black_main"
         android:layout_marginStart="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textViewNameLabel" />
@@ -86,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textSize="24sp"
+        android:textColor="@color/ir_black_main"
         app:layout_constraintBaseline_toBaselineOf="@id/textViewIdLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/textViewIdLabel"
