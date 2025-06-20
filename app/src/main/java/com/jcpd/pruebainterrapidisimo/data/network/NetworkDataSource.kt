@@ -1,5 +1,6 @@
 package com.jcpd.pruebainterrapidisimo.data.network
 
+import com.jcpd.pruebainterrapidisimo.data.models.LocationsModel
 import com.jcpd.pruebainterrapidisimo.data.models.TableModel
 import com.jcpd.pruebainterrapidisimo.data.models.UserModel
 import retrofit2.Response
@@ -46,4 +47,7 @@ interface NetworkDataSource {
     )
     @GET("apicontrollerpruebas/api/SincronizadorDatos/ObtenerEsquema/true")
     suspend fun getEsqueme(): Response<List<TableModel>>
+
+    @GET("apicontrollerpruebas/api/ParametrosFramework/ObtenerLocalidadesRecogidas")
+    suspend fun getLocations() : Response<List<LocationsModel>>
 }

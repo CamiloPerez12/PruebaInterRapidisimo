@@ -1,6 +1,8 @@
 package com.jcpd.pruebainterrapidisimo.data.models
 
+import com.google.gson.annotations.SerializedName
+
 data class LocationsModel(
-    val name : String,
-    val city : String,
+   @SerializedName("NombreCompleto") val locationName : String,
+   @SerializedName("AbreviacionCiudad") val locationCity : String,
 )
