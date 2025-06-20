@@ -27,6 +27,13 @@ class TablesViewModel @Inject constructor(
             val response = repository.getEsqueme()
             if (response.isSuccessful && response.body() != null) {
                 _state.value = response.body()!!
+                val tables = repository.getTables()
+                if (tables.isNotEmpty()) {
+                    repository.deleteTables()
+                }
+                for (table in response.body()!!) {
+                    repository.setTables(table)
+                }
             }
         }
     }

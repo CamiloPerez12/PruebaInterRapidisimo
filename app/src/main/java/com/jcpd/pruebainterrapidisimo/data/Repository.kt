@@ -11,4 +11,7 @@ interface Repository {
     suspend fun getLogin(): Response<UserModel>
     suspend fun getEsqueme(): Response<List<TableModel>>
     suspend fun getLocations(): Response<List<LocationsModel>>
+    suspend fun getTables(): List<TableModel>
+    suspend fun setTables(tableModel : TableModel): Long
+    suspend fun deleteTables(): Int
 }
