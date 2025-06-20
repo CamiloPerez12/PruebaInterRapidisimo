@@ -1,5 +1,6 @@
 package com.jcpd.pruebainterrapidisimo.data.network
 
+import com.jcpd.pruebainterrapidisimo.data.models.TableModel
 import com.jcpd.pruebainterrapidisimo.data.models.UserModel
 import retrofit2.Response
 import retrofit2.http.Body
@@ -32,4 +33,17 @@ interface NetworkDataSource {
             "Usuario" to "cGFtLm1lcmVkeTIx\n"
         )
     ): Response<UserModel>
+
+    @Headers(
+        "Usuario: pam.meredy21",
+        "Identificacion: 987204545",
+        "Accept: text/json",
+        "IdUsuario: pam.meredy21",
+        "IdCentroServicio: 1295",
+        "NombreCentroServicio: PTO/BOGOTA/CUND/COL/OF PRINCIPAL - CRA 30 # 7-45",
+        "IdAplicativoOrigen: 9",
+        "Content-Type: application/json"
+    )
+    @GET("apicontrollerpruebas/api/SincronizadorDatos/ObtenerEsquema/true")
+    suspend fun getEsqueme(): Response<List<TableModel>>
 }

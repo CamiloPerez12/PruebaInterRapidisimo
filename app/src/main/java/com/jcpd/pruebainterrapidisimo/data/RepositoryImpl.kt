@@ -1,5 +1,6 @@
 package com.jcpd.pruebainterrapidisimo.data
 
+import com.jcpd.pruebainterrapidisimo.data.models.TableModel
 import com.jcpd.pruebainterrapidisimo.data.models.UserModel
 import com.jcpd.pruebainterrapidisimo.data.network.NetworkDataSource
 import retrofit2.Response
@@ -14,5 +15,9 @@ class RepositoryImpl @Inject constructor(
 
     override suspend fun getLogin(): Response<UserModel> {
         return  networkDataSource.getLogin()
+    }
+
+    override suspend fun getEsqueme(): Response<List<TableModel>> {
+        return  networkDataSource.getEsqueme()
     }
 }
